@@ -40,6 +40,7 @@ DB_USER=root
 DB_PASSWORD=yourdbpassword
 DB_NAME=smitcscinfo
 DB_SYNC=false
+DB_LOGGING=false
 ```
 
 ## Project setup
