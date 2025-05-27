@@ -25,6 +25,23 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Application Configuration
+
+Before running the application, you need to set up a `.env` file in the root directory with the following variables:
+
+```env
+# Application Configuration
+APP_PORT=5000
+
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=yourdbpassword
+DB_NAME=smitcscinfo
+DB_SYNC=false
+```
+
 ## Project setup
 
 ```bash
@@ -96,3 +113,4 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
