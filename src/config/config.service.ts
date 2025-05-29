@@ -20,7 +20,7 @@ export class ConfigService {
 
   getAppConfig() {
     return {
-      port: this.nestConfigService.get<number>('APP_PORT') || 3000,
+      port: this.nestConfigService.get<number>('PORT') || 3000,
       env: this.nestConfigService.get<string>('NODE_ENV') || 'development',
     };
   }
