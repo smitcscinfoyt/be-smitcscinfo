@@ -18,6 +18,6 @@ export class DatabaseModule {
   private readonly logger = new Logger(DatabaseModule.name);
 
   onModuleInit() {
-    this.logger.log('✅ MySQL Database connected successfully (NestJS)');
+    this.logger.log('✅ Postgress Database connected successfully (NestJS)');
   }
 }

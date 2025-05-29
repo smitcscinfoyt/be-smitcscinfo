@@ -12,6 +12,7 @@ export class ConfigService {
       username: this.nestConfigService.get<string>('DB_USER'),
       password: this.nestConfigService.get<string>('DB_PASSWORD'),
       database: this.nestConfigService.get<string>('DB_NAME'),
+      ssl: this.nestConfigService.get<string>('DB_SSL') === 'true',
       synchronize: this.nestConfigService.get<boolean>('DB_SYNC', false),
       logging: this.nestConfigService.get<boolean>('DB_LOGGING', false),
     };

@@ -20,16 +20,18 @@ function buildConfig(config: {
   username: string;
   password: string;
   database: string;
+  ssl: boolean | { rejectUnauthorized: boolean };
   synchronize: boolean;
   logging: boolean;
 }): DataSourceOptions {
   return {
-    type: 'mysql',
+    type: 'postgres',
     host: config.host,
     port: config.port,
     username: config.username,
     password: config.password,
     database: config.database,
+    ssl: config.ssl,
     synchronize: config.synchronize,
     logging: config.logging,
     migrationsTableName: 'migrations',
@@ -58,8 +60,12 @@ export const getDatabaseConfig = (
       username: required(db.username, 'DB_USER (configService)'),
       password: required(db.password, 'DB_PASSWORD (configService)'),
       database: required(db.database, 'DB_NAME (configService)'),
-      synchronize: db.synchronize ?? false,
-      logging: db.logging ?? false,
+      ssl:
+        required(db.ssl, 'DB_SSL (configService)') === true
+          ? { rejectUnauthorized: false }
+          : false,
+      synchronize: required(db.synchronize, 'DB_SYNC (configService)'),
+      logging: required(db.logging, 'DB_LOGGING (configService)'),
     });
   }
 
@@ -69,8 +75,9 @@ export const getDatabaseConfig = (
     username: requireEnv('DB_USER'),
     password: requireEnv('DB_PASSWORD'),
     database: requireEnv('DB_NAME'),
-    synchronize: process.env.DB_SYNC === 'true',
-    logging: process.env.DB_LOGGING === 'true',
+    ssl: requireEnv('DB_SSL') === 'true',
+    synchronize: requireEnv('DB_SYNC') === 'true',
+    logging: requireEnv('DB_LOGGING') === 'true',
   });
 };
 
