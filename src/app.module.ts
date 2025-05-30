@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import { TranslationService } from './common/services/translation.service';
+import { RolesModule } from './modules/roles/roles.module';
 import * as path from 'path';
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import * as path from 'path';
     ConfigModule,
     DatabaseModule,
     UsersModule,
+    RolesModule,
   ],
   controllers: [AppController],
   providers: [AppService, TranslationService],
