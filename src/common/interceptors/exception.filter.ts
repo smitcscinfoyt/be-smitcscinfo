@@ -51,7 +51,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
       status: HttpStatus[status].toLowerCase(),
       message,
       timestamp: new Date().toISOString(),
-      data: [],
     });
   }
 }

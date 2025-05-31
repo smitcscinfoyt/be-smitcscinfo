@@ -1,5 +1,7 @@
 {
   "EMPTY_NAME": "Role name cannot be empty",
   "DUPLICATE_NAME": "Role with this name already exists",
-  "CREATED_SUCCESS": "Role created successfully"
+  "CREATED_SUCCESS": "Role created successfully",
+  "FETCH_SUCCESS": "Roles fetched successfully",
+  "INVALID_ID": "Invalid role ID format"
 }

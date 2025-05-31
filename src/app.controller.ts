@@ -13,7 +13,6 @@ export class AppController {
   @ApiOperation({ summary: 'Health Check Endpoint' })
   @ApiResponse({
     status: 200,
-    description: 'Health check successful',
     type: ApiResponseDto,
   })
   @ApiHeader({
