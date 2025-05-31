@@ -1,3 +1,5 @@
 {
-  "EMPTY_NAME": "Role name cannot be empty"
+  "EMPTY_NAME": "Role name cannot be empty",
+  "DUPLICATE_NAME": "Role with this name already exists",
+  "CREATED_SUCCESS": "Role created successfully"
 }

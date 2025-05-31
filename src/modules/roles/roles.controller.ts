@@ -11,15 +11,13 @@ export class RolesController {
   ) {}
   @Post()
   async createRole(@Query('name') name: string) {
-    if (!name || name.trim() === '') {
-      return {
-        statusCode: HttpStatus.BAD_REQUEST,
-        status: HttpStatus[HttpStatus.OK].toLowerCase(),
-        message: await this.translationService.t(I18nKeys.ROLES.EMPTY_NAME),
-        timestamp: new Date().toISOString(),
-        data: [],
-      };
-    }
-    return this.rolesService.createRole(name);
+    const role = await this.rolesService.createRole(name);
+    return {
+      statusCode: HttpStatus.CREATED,
+      status: HttpStatus[HttpStatus.CREATED].toLowerCase(),
+      message: this.translationService.t(I18nKeys.ROLES.CREATED_SUCCESS),
+      timestamp: new Date().toISOString(),
+      data: role,
+    };
   }
 }
