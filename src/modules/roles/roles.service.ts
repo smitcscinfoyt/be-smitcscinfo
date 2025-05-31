@@ -18,9 +18,6 @@ export class RolesService {
       );
     }
 
-    const role = new Role();
-    const newROle = await this.RoleRepo.c
-
     return name;
   }
 }
