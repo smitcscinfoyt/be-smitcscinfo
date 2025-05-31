@@ -21,7 +21,7 @@ export class RolesController {
     private readonly translationService: TranslationService,
   ) {}
 
-  @Post()
+  @Post('create')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a new role' })
   @ApiHeader({
@@ -44,7 +44,7 @@ export class RolesController {
     };
   }
 
-  @Get()
+  @Get('get')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get all roles' })
   @ApiHeader({
