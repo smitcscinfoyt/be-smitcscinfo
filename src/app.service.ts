@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { TranslationService } from './common/services/translation.service';
-import { I18nKeys } from './i18n/i18n-keys';
+import { I18nKeys } from './common/i18n/i18n-keys';
 import { ApiResponseDto } from './common/dto/api-response.dto';
 
 @Injectable()

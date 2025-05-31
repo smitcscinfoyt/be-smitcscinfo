@@ -14,10 +14,7 @@ import * as path from 'path';
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
-        path:
-          process.env.NODE_ENV === 'production'
-            ? path.join(__dirname, '/i18n/')
-            : path.join(__dirname, '../src/i18n/'),
+        path: path.join(process.cwd(), 'i18n'),
         watch: process.env.NODE_ENV !== 'production',
       },
       resolvers: [new AcceptLanguageResolver(), new QueryResolver(['lang'])],

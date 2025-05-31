@@ -1,7 +1,7 @@
 import { Injectable, Scope, Inject } from '@nestjs/common';
 import { I18nService } from 'nestjs-i18n';
 import { REQUEST } from '@nestjs/core';
-import { TranslationKey } from '../../i18n/i18n-keys';
+import { TranslationKey } from '../i18n/i18n-keys';
 
 @Injectable({ scope: Scope.REQUEST })
 export class TranslationService {

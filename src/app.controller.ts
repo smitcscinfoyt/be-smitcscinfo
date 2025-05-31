@@ -8,7 +8,7 @@ import { SupportedLanguages } from './common/enums/language.enum';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('health')
+  @Get('health-check')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Health Check Endpoint' })
   @ApiResponse({

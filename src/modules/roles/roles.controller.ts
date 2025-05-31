@@ -1,7 +1,7 @@
 import { Controller, HttpStatus, Post, Query } from '@nestjs/common';
 import { RolesService } from './roles.service';
 import { TranslationService } from 'src/common/services/translation.service';
-import { I18nKeys } from 'src/i18n/i18n-keys';
+import { I18nKeys } from '../../common/i18n/i18n-keys';
 
 @Controller('roles')
 export class RolesController {
