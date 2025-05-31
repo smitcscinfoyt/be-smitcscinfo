@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { TranslationService } from 'src/common/services/translation.service';
 import { I18nKeys } from '../../common/i18n/i18n-keys';
 import { DataSource } from 'typeorm';
@@ -12,25 +12,27 @@ export class RolesService {
   ) {}
   async createRole(name: string) {
     if (!name || name.trim() === '') {
-      throw new Error(
+      throw new HttpException(
         await this.translationService.t(I18nKeys.ROLES.EMPTY_NAME),
+        HttpStatus.BAD_REQUEST,
       );
     }
 
-    const role: Role = await this.dataSource.query(
-      `INSERT INTO role (name)
-      values ($1)
+    const result: Role[] = await this.dataSource.query(
+      `INSERT INTO roles (name)
+      VALUES ($1)
       ON CONFLICT (name) DO NOTHING
-      RETURN *`,
+      RETURNING *`,
       [name],
     );
 
-    if (!role) {
-      throw new Error(
+    if (!result || result.length === 0) {
+      throw new HttpException(
         await this.translationService.t(I18nKeys.ROLES.DUPLICATE_NAME),
+        HttpStatus.BAD_REQUEST,
       );
     }
 
-    return role;
+    return result[0];
   }
 }

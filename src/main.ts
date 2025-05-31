@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { ConfigService } from './config/config.service';
 import { LanguageMiddleware } from './common/middleware/language.middleware';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AllExceptionsFilter } from './common/interceptors/exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +18,10 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
+
+  // Apply global error/exception filter
+  app.useGlobalFilters(new AllExceptionsFilter());
+
   SwaggerModule.setup('api', app, document);
 
   const PORT = configService.getAppConfig().port;
