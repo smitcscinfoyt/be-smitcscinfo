@@ -3,13 +3,14 @@ import { TranslationService } from 'src/common/services/translation.service';
 import { I18nKeys } from 'src/i18n/i18n-keys';
 import { Role } from './enitities/role.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class RolesService {
   constructor(
     private readonly translationService: TranslationService,
     @InjectRepository(Role)
-    private readonly RoleRepo: Repository,
+    private readonly RoleRepo: Repository<Role>,
   ) {}
   async createRole(name: string) {
     if (!name || name.trim() === '') {
